@@ -55,6 +55,7 @@ function main(wordList, word, numTurns) {
     }
     return 0;
 }
+// ^ there's nothing below here so don't bother looking
 // ^ word list
 var wList = [
     'faffy',
@@ -13031,3 +13032,4 @@ var wList = [
     'plush',
 ];
 main(wList);
+// told ya
