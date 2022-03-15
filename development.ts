@@ -60,6 +60,7 @@ function main(wordList?: string[], word?: string, numTurns?: number) {
     return 0;
 }
 
+// ^ there's nothing below here so don't bother looking
 // ^ word list
 const wList: string[] = [
     'faffy',
