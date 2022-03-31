@@ -10,5 +10,7 @@ thanks to the provider of the previously mentioned link for the word list
 but it is as easy as editting line 43 to:
 
 ```ts
+// can be just the part after || but i think if it not > 5 char,
+// it would not check the second condition and better perf?
 if(guess.length !== 5 || !wordList.includes(guess)){...}
 ```
