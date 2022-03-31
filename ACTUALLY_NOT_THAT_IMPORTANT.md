@@ -7,5 +7,8 @@ cloned wordle's logic in a cli game using this wordlist "https://rhdzmota.com/fi
 thanks to the provider of the previously mentioned link for the word list
 
 \*the game does not check if word is meaningful/in the list 'cause i dunno if the performance hit will be worth it,
-but it is as easy as editting line 43 to if(guess.length !== 5 || !wordList.includes(guess)){...}
-ayo 🆒
+but it is as easy as editting line 43 to:
+
+```ts
+if(guess.length !== 5 || !wordList.includes(guess)){...}
+```
