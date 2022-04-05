@@ -27,11 +27,12 @@ const turns: number = numTurns ? numTurns : 6
 ```
 stupid I know, even if it was not making infinite game loops, it would still be stupid cause it should just simply be 
 ```ts
-// cleaner implementaion but same error cause 0(and ""(empty string)) is a null value in JS
+// cleaner implementaion but same error
+// (oh and just like 2 lines below I repeated the clunky long code for intializing chosen word but forgot to fix and now do not want to mess up commit mess, it is not wrong though soooooo, use ur imagination ok)
+
 const turns: number = numTurns || 6
 ```
-but guess what, it does cause infinate game loop:( (oh and just like 2 lines below I repeated the clunky long code for intializing chosen word but forgot to fix 
-and now do not want to mess up commit mess, it is not wrong soooooo, use ur imagination ok)
+but guess what, it does cause infinate game loop:( since 0(and ""(empty string)) is a null value in JS 
 #### fixx: 
 ```ts
 // nullish coellesing opperator (??) return true even for 0 and ""
