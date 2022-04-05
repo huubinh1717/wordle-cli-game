@@ -1,4 +1,4 @@
-# wordle-cli-game
+# WORDLE_CLI_GAME
 
 cloned wordle's logic in a cli game using this wordlist "https://rhdzmota.com/files/wordle.json"
 
