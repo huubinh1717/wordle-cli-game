@@ -23,7 +23,7 @@ var validate = function (guess, word) {
 };
 function main(wordList, word, numTurns) {
     var prompt = require('prompt-sync')({ sigint: true });
-    var turns = numTurns ? numTurns : 6;
+    var turns = numTurns ?? 6;
     var done = false;
     var chosenOne = word ? word : generate(wordList);
     console.log('\n');

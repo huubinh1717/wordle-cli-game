@@ -25,7 +25,7 @@ const validate = (guess: string, word: string): number[] => {
 
 function main(wordList?: string[], word?: string, numTurns?: number) {
     const prompt = require('prompt-sync')({ sigint: true });
-    let turns: number = numTurns ? numTurns : 6;
+    let turns: number = numTurns ?? 6;
     let done: boolean = false;
     const chosenOne: string = word ? word : generate(wordList);
     console.log('\n');
