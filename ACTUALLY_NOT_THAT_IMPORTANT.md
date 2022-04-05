@@ -21,14 +21,16 @@ if(guess.length !== 5 || !wordList.includes(guess)){...}
 
 ## #1: Even new features of JS have use cases, look at you
 
-so there is this peace of code(not shit(you if you laughed(sorry))):
+so there is this piece of code(not shit(you if you laughed(sorry))):
 ```ts
 const turns: number = numTurns ? numTurns : 6
 ```
 stupid I know, even if it was not making infinite game loops, it would still be stupid cause it should just simply be 
 ```ts
 // cleaner implementaion but same error
-// (oh and just like 2 lines below I repeated the clunky long code for intializing chosen word but forgot to fix and now do not want to mess up commit mess, it is not wrong though soooooo, use ur imagination ok)
+// (oh and just like 2 lines below I repeated the clunky long code for intializing chosen word 
+// but forgot to fix and now do not want to mess up commit mess, it is not wrong though soooooo,
+// use ur imagination ok)
 
 const turns: number = numTurns || 6
 ```
