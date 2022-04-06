@@ -28,7 +28,10 @@ function main(wordList?: string[], word?: string, numTurns?: number) {
 	let turns: number = numTurns ?? 6;
 	let done: boolean = false;
 	const chosenOne: string = word ? word : generate(wordList);
-	console.log(`you have ${turns} turns \n`);
+	if (turns === 6) {
+		console.log(`you have ${turns} turns \n`);
+	}
+	console.log('\n');
 	const guess: string = prompt('guess(5-letter, meaningful): ');
 	const result: number[] = validate(guess, chosenOne);
 	console.log('your guess: ', guess);
@@ -43,6 +46,7 @@ function main(wordList?: string[], word?: string, numTurns?: number) {
 	if (guess.length !== 5) {
 		console.log('invalid guess 😞😢, try inputting a 5-letter word');
 		main([], chosenOne, turns);
+		return 0;
 	}
 	if (turns > 0 && !done) {
 		turns -= 1;
