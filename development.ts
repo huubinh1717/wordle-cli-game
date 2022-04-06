@@ -28,8 +28,8 @@ function main(wordList?: string[], word?: string, numTurns?: number) {
 	let turns: number = numTurns ?? 6;
 	let done: boolean = false;
 	const chosenOne: string = word ? word : generate(wordList);
-	process.stdout.write('\nenter guess(5-letter, meaningful word)');
-	const guess: string = prompt();
+	console.log(`you have ${turns} turns \n`);
+	const guess: string = prompt('guess(5-letter, meaningful): ');
 	const result: number[] = validate(guess, chosenOne);
 	console.log('your guess: ', guess);
 	// console.log('word: ', chosenOne);

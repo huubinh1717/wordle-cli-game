@@ -26,8 +26,8 @@ function main(wordList, word, numTurns) {
 	var turns = numTurns ?? 6;
 	var done = false;
 	var chosenOne = word ? word : generate(wordList);
-	process.stdout.write('\nenter guess(5-letter, meaningful word)');
-	var guess = prompt();
+	console.log(`you have ${turns} turns \n`);
+	var guess = prompt('guess(5-letter, meaningful): ');
 	var result = validate(guess, chosenOne);
 	console.log('your guess: ', guess);
 	// console.log('word: ', chosenOne);
