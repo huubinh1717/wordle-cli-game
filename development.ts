@@ -1,5 +1,6 @@
 const generate = (wList): string => {
-	console.log('\ninitiating...');
+	console.clear();
+	console.log('initiating...');
 	const word: string = wList[Math.floor(Math.random() * wList.length)];
 	console.log("let's roll");
 	return word;
@@ -38,7 +39,7 @@ function main(wordList?: string[], word?: string, numTurns?: number) {
 	// console.log('word: ', chosenOne);
 
 	if (guess === chosenOne) {
-		console.log('\n\nYOU WINNNN!!!🎆😍😆\n\n');
+		console.log('\n\nYOU WINNNN!!!🎆😍😆\n');
 		done = true;
 		return 0;
 	}
@@ -52,7 +53,7 @@ function main(wordList?: string[], word?: string, numTurns?: number) {
 		turns -= 1;
 		console.log('result: ', result);
 		if (turns === 0) {
-			console.log(`\n\nAwww bad luck!😢😞😿 it was: ${chosenOne}\n\n`);
+			console.log(`\n\nAwww bad luck!😢😞😿 it was: ${chosenOne}\n`);
 			done = true;
 			return 0;
 		}
@@ -13042,4 +13043,8 @@ const wList: string[] = [
 ];
 
 main(wList);
+console.log('wait 3 secs, term will clear');
+setTimeout(() => {
+	console.clear();
+}, 3000);
 // told ya

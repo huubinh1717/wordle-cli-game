@@ -1,5 +1,6 @@
 var generate = function (wList) {
-	console.log('\ninitiating...');
+	console.clear();
+	console.log('initiating...');
 	var word = wList[Math.floor(Math.random() * wList.length)];
 	console.log("let's roll");
 	return word;
@@ -35,7 +36,7 @@ function main(wordList, word, numTurns) {
 	console.log('your guess: ', guess);
 	// console.log('word: ', chosenOne);
 	if (guess === chosenOne) {
-		console.log('\n\nYOU WINNNN!!!🎆😍😆\n\n');
+		console.log('\n\nYOU WINNNN!!!🎆😍😆\n');
 		done = true;
 		return 0;
 	}
@@ -51,7 +52,7 @@ function main(wordList, word, numTurns) {
 			console.log(
 				'\n\nAwww bad luck!\uD83D\uDE22\uD83D\uDE1E\uD83D\uDE3F it was: '.concat(
 					chosenOne,
-					'\n\n',
+					'\n',
 				),
 			);
 			done = true;
@@ -13041,4 +13042,8 @@ var wList = [
 	'plush',
 ];
 main(wList);
+console.log('wait 3 secs, term will clear');
+setTimeout(() => {
+	console.clear();
+}, 3000);
 // told ya
