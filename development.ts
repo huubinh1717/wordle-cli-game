@@ -1,5 +1,5 @@
 const generate = (wList): string => {
-	console.log('initiating...');
+	console.log('\ninitiating...');
 	const word: string = wList[Math.floor(Math.random() * wList.length)];
 	console.log("let's roll");
 	return word;

@@ -1,5 +1,5 @@
 var generate = function (wList) {
-	console.log('initiating...');
+	console.log('\ninitiating...');
 	var word = wList[Math.floor(Math.random() * wList.length)];
 	console.log("let's roll");
 	return word;
