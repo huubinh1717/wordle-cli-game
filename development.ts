@@ -13043,8 +13043,8 @@ const wList: string[] = [
 ];
 
 main(wList);
-console.log('wait 3 secs, term will clear');
+console.log('wait 5 secs, term will clear');
 setTimeout(() => {
 	console.clear();
-}, 3000);
+}, 5000);
 // told ya
