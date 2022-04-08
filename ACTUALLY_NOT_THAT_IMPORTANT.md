@@ -3,6 +3,8 @@
 cloned wordle's logic in a cli game using this wordlist
 "https://rhdzmota.com/files/wordle.json"
 
+#### you can play by downloading the suitable executable for you os and run(if you trust a random guy on the internet with his .exe) it's is not really the point to this project though cause honestly it sucks ass and is just a little excercise for me.
+
 ## I planned to make a web wordle clone but nahh I'm lazy so I made this instead
 
 thanks to the provider of the previously mentioned link for the word list
