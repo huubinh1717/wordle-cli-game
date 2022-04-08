@@ -35,12 +35,17 @@ function endGame() {
 }
 
 function ifContinue() {
-	switch (uInput('wanna continue playing?(y/n): ').toLowerCase()) {
-		case 'y':
-			game(wList);
-			return;
-		case 'n':
-			endGame();
+	const input = uInput('wanna continue playing?(y/n): ').toLowerCase();
+	if (input === 'y') {
+		game(wList);
+		return;
+	}
+	if (input === 'n') {
+		endGame();
+		return;
+	} else {
+		ifContinue();
+		return;
 	}
 }
 
