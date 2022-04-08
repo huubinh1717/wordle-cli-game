@@ -35,7 +35,7 @@ function endGame() {
 }
 
 function ifContinue() {
-	const input = uInput('wanna continue playing?(y/n): ').toLowerCase();
+	const input = uInput('wanna continue playing?(y/n): ').toLowerCase().trim();
 	if (input === 'y') {
 		game(wList);
 		return;
@@ -57,7 +57,9 @@ function game(wordList?: string[], word?: string, numTurns?: number) {
 		console.log(`you have ${turns} turns \n`);
 	}
 	console.log('\n');
-	const guess: string = uInput('guess(5-letter, meaningful): ');
+	const guess: string = uInput('guess(legitimate, 5-letter): ')
+		.toLowerCase()
+		.trim();
 	const result: number[] = validate(guess, chosenOne);
 	console.log('your guess: ', guess);
 	// console.log('word: ', chosenOne);
@@ -69,9 +71,15 @@ function game(wordList?: string[], word?: string, numTurns?: number) {
 		return 0;
 	}
 
-	if (guess.length !== 5) {
-		console.log('invalid guess 😞😢, try inputting a 5-letter word');
-		game([], chosenOne, turns);
+	if (
+		guess.length !== 5 ||
+		guess.includes(' ') ||
+		!wordList.includes(guess)
+	) {
+		console.log(
+			'invalid guess 😞😢, try inputting a meaningful 5-letter word ',
+		);
+		game(wordList, chosenOne, turns);
 		return 0;
 	}
 	if (turns > 0 && !done) {
@@ -85,7 +93,7 @@ function game(wordList?: string[], word?: string, numTurns?: number) {
 		}
 		console.log('remaining turn(s): ', turns);
 		if (!done) {
-			game([], chosenOne, turns);
+			game(wordList, chosenOne, turns);
 		}
 	}
 	return 0;
