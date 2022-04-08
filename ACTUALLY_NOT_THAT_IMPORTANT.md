@@ -52,7 +52,7 @@ const turns: number = numTurns ?? 6;
 
 ### reminder to future self: nullish coellesing is great, unlike you:(
 
-## #2: Recursion fucked me (wtf is with me and infinite game loops)
+## #2: Recursion messed me up (wtf is with me and infinite game loops)
 
 I've noticed that the program sometimes loop instead of ending when player sucks
 and cannot guess, i brushed it off cause uncertain of what the problem was and
@@ -75,3 +75,37 @@ if (guess.length !== 5) {
 ```
 
 ### reminder to future self: unlike you, the program is unlikely wrong, don't blame
+
+## 3: Recursion is still trippy af
+
+while adding the the feature to continue playing, i came up with these funcs
+
+```ts
+function endGame() {
+	console.log('wait 3 secs, term will clear');
+	setTimeout(() => {
+		console.clear();
+		return;
+	}, 3000);
+}
+
+function ifContinue() {
+	switch (uInput('wanna continue playing?(y/n): ').toLowerCase()) {
+		case 'y':
+			game(wList);
+		// return;    added later as fix
+		case 'n':
+			endGame();
+	}
+}
+// result: prints "wait 3 secs, term will clear" multiple times
+```
+
+it would run when you win or lose, but since i'm bad at recursion, i overlooked
+the fact that when U want to replay, the second func would be running, while the
+first would wait for return of second func, if i do not escape the second func,
+the uInput actually is now n so 2 endGame is called
+
+#### fix: add return like the code above
+
+### reminder to future self: when there's a recursion bug, it's prob a missing return(easily fixable, unlike you)

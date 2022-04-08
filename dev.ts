@@ -1,3 +1,5 @@
+const uInput = require('prompt-sync')({ sigint: true });
+
 const generate = (wList): string => {
 	console.clear();
 	console.log('initiating...');
@@ -24,8 +26,25 @@ const validate = (guess: string, word: string): number[] => {
 	return res;
 };
 
-function main(wordList?: string[], word?: string, numTurns?: number) {
-	const prompt = require('prompt-sync')({ sigint: true });
+function endGame() {
+	console.log('wait 3 secs, term will clear');
+	setTimeout(() => {
+		console.clear();
+		return;
+	}, 3000);
+}
+
+function ifContinue() {
+	switch (uInput('wanna continue playing?(y/n): ').toLowerCase()) {
+		case 'y':
+			game(wList);
+			return;
+		case 'n':
+			endGame();
+	}
+}
+
+function game(wordList?: string[], word?: string, numTurns?: number) {
 	let turns: number = numTurns ?? 6;
 	let done: boolean = false;
 	const chosenOne: string = word ? word : generate(wordList);
@@ -33,7 +52,7 @@ function main(wordList?: string[], word?: string, numTurns?: number) {
 		console.log(`you have ${turns} turns \n`);
 	}
 	console.log('\n');
-	const guess: string = prompt('guess(5-letter, meaningful): ');
+	const guess: string = uInput('guess(5-letter, meaningful): ');
 	const result: number[] = validate(guess, chosenOne);
 	console.log('your guess: ', guess);
 	// console.log('word: ', chosenOne);
@@ -41,12 +60,13 @@ function main(wordList?: string[], word?: string, numTurns?: number) {
 	if (guess === chosenOne) {
 		console.log('\n\nYOU WINNNN!!!🎆😍😆\n');
 		done = true;
+		ifContinue();
 		return 0;
 	}
 
 	if (guess.length !== 5) {
 		console.log('invalid guess 😞😢, try inputting a 5-letter word');
-		main([], chosenOne, turns);
+		game([], chosenOne, turns);
 		return 0;
 	}
 	if (turns > 0 && !done) {
@@ -55,11 +75,12 @@ function main(wordList?: string[], word?: string, numTurns?: number) {
 		if (turns === 0) {
 			console.log(`\n\nAwww bad luck!😢😞😿 it was: ${chosenOne}\n`);
 			done = true;
+			ifContinue();
 			return 0;
 		}
 		console.log('remaining turn(s): ', turns);
 		if (!done) {
-			main([], chosenOne, turns);
+			game([], chosenOne, turns);
 		}
 	}
 	return 0;
@@ -67,8 +88,4 @@ function main(wordList?: string[], word?: string, numTurns?: number) {
 
 const { data: wList }: { data: string[] } = require('./words.json');
 
-main(wList);
-console.log('wait 5 secs, term will clear');
-setTimeout(() => {
-	console.clear();
-}, 5000);
+game(wList);

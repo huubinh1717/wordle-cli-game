@@ -1,3 +1,4 @@
+var uInput = require('prompt-sync')({ sigint: true });
 var generate = function (wList) {
 	console.clear();
 	console.log('initiating...');
@@ -22,8 +23,23 @@ var validate = function (guess, word) {
 	}
 	return res;
 };
-function main(wordList, word, numTurns) {
-	var prompt = require('prompt-sync')({ sigint: true });
+function endGame() {
+	console.log('wait 3 secs, term will clear');
+	setTimeout(function () {
+		console.clear();
+		return;
+	}, 3000);
+}
+function ifContinue() {
+	switch (uInput('wanna continue playing?(y/n): ').toLowerCase()) {
+		case 'y':
+			game(wList);
+			return;
+		case 'n':
+			endGame();
+	}
+}
+function game(wordList, word, numTurns) {
 	var turns = numTurns !== null && numTurns !== void 0 ? numTurns : 6;
 	var done = false;
 	var chosenOne = word ? word : generate(wordList);
@@ -31,18 +47,19 @@ function main(wordList, word, numTurns) {
 		console.log('you have '.concat(turns, ' turns \n'));
 	}
 	console.log('\n');
-	var guess = prompt('guess(5-letter, meaningful): ');
+	var guess = uInput('guess(5-letter, meaningful): ');
 	var result = validate(guess, chosenOne);
 	console.log('your guess: ', guess);
 	// console.log('word: ', chosenOne);
 	if (guess === chosenOne) {
 		console.log('\n\nYOU WINNNN!!!🎆😍😆\n');
 		done = true;
+		ifContinue();
 		return 0;
 	}
 	if (guess.length !== 5) {
 		console.log('invalid guess 😞😢, try inputting a 5-letter word');
-		main([], chosenOne, turns);
+		game([], chosenOne, turns);
 		return 0;
 	}
 	if (turns > 0 && !done) {
@@ -56,18 +73,15 @@ function main(wordList, word, numTurns) {
 				),
 			);
 			done = true;
+			ifContinue();
 			return 0;
 		}
 		console.log('remaining turn(s): ', turns);
 		if (!done) {
-			main([], chosenOne, turns);
+			game([], chosenOne, turns);
 		}
 	}
 	return 0;
 }
 var wList = require('./words.json').data;
-main(wList);
-console.log('wait 5 secs, term will clear');
-setTimeout(function () {
-	console.clear();
-}, 5000);
+game(wList);
