@@ -22,6 +22,7 @@ if(guess.length !== 5 || !wordList.includes(guess)){...}
 
 # DevLog?:) : BUGs :(
 
+
 ## #1: Even new features of JS have use cases, look at you
 
 so there is this piece of code(not shit(you if you laughed(sorry))):
@@ -54,6 +55,7 @@ const turns: number = numTurns ?? 6;
 
 ### reminder to future self: nullish coellesing is great, unlike you:(
 
+
 ## #2: Recursion messed me up (wtf is with me and infinite game loops)
 
 I've noticed that the program sometimes loop instead of ending when player sucks
@@ -77,6 +79,7 @@ if (guess.length !== 5) {
 ```
 
 ### reminder to future self: unlike you, the program is unlikely wrong, don't blame
+
 
 ## 3: Recursion is still trippy af
 
