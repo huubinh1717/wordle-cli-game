@@ -25,7 +25,7 @@ if(guess.length !== 5 || !wordList.includes(guess)){...}
 
 ## #1: Even new features of JS have use cases, look at you
 
-so there is this piece of code(not shit(you if you laughed(sorry))):
+so there is this piece of code
 
 ```ts
 const turns: number = numTurns ? numTurns : 6;
